@@ -13,6 +13,9 @@ public class SetUpWebDriver {
 	private static final Logger LOGGER = LogManager.getRootLogger();
 	private static WebDriver driver;
 	private static WebDriverCreater driverCreator;
+	
+	private SetUpWebDriver(){}
+	
 	public static void initializeDriver(String browserName) {
 		switch (Browser.valueOf(browserName.toUpperCase())) {
 		case FIREFOX:
