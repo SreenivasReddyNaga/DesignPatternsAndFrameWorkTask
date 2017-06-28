@@ -17,7 +17,7 @@ public class DatePickerClass {
 	private HelperClass helper;
 
 	public DatePickerClass() {
-		this.datePage = new DateSelectionPage(SetUpWebDriver.getDriver());
+		this.datePage = new DateSelectionPage(SetUpWebDriver.getDriverInstance());
 		helper = new HelperClass();
 	}
 

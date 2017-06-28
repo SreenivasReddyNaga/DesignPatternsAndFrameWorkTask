@@ -21,9 +21,9 @@ public class FlightBookingTest extends WebDriverBaseClass {
 	@DataSourceSheet(value = "FlightBooking")
 	@Test(dataProvider = "row-based-data")
 	public void flightBookingTest(Map<String, String> bookingData) {
-		Assert.assertEquals(SetUpWebDriver.getDriver().getTitle(), expTitle);
+		Assert.assertEquals(SetUpWebDriver.getDriverInstance().getTitle(), expTitle);
 
-		boolean isFlightSearchComplete = new HomePage(SetUpWebDriver.getDriver()).flightSearch(bookingData)
+		boolean isFlightSearchComplete = new HomePage(SetUpWebDriver.getDriverInstance()).flightSearch(bookingData)
 				.isDisplayed();
 		Assert.assertTrue(isFlightSearchComplete, "User not able to search for flights");
 
@@ -39,7 +39,7 @@ public class FlightBookingTest extends WebDriverBaseClass {
 				.withSelectedDestinationCity(bookingData.get("selectedDestinationCity"));
 
 		SoftAssert softAssert = new SoftAssert();
-		BookingResultsPage bookingPage = new BookingResultsPage(SetUpWebDriver.getDriver());
+		BookingResultsPage bookingPage = new BookingResultsPage(SetUpWebDriver.getDriverInstance());
 
 		softAssert.assertEquals(bookingPage.getChooseYourflightTabStatus(), flightData.getChooseYourflightTabStatus());
 		softAssert.assertEquals(bookingPage.getFromAndDestination().trim(),

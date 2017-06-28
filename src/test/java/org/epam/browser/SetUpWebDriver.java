@@ -38,16 +38,16 @@ public class SetUpWebDriver {
 		LOGGER.info("Script execting on " + browserName + "browser");
 	}
 
-	public static WebDriver getDriver() {
+	public static WebDriver getDriverInstance() {
 		return driver;
 	}
 
-	public static EventFiringWebDriver getEDriver() {
+	public static EventFiringWebDriver getEDriverInstance() {
 		return setEDriver();
 	}
 
 	public static EventFiringWebDriver setEDriver() {
-		EventFiringListener eventFiring = new EventFiringListener(getDriver());
+		EventFiringListener eventFiring = new EventFiringListener(getDriverInstance());
 		return eventFiring.getEdriver();
 	}
 

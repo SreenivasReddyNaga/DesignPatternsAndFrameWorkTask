@@ -33,7 +33,7 @@ public class HelperClass {
 	
 
 	public boolean isTextPresent(String textToVerify) {
-		String bodyText = SetUpWebDriver.getDriver().findElement(By.tagName("body")).getText();
+		String bodyText = SetUpWebDriver.getDriverInstance().findElement(By.tagName("body")).getText();
 		return bodyText.contains(textToVerify);
 	}
 
@@ -47,18 +47,18 @@ public class HelperClass {
 
 	public WebElement waitForElementVisible(WebElement locator, int timeOut) {
 
-		Wait<WebDriver> wait = new WebDriverWait(SetUpWebDriver.getDriver(), timeOut);
+		Wait<WebDriver> wait = new WebDriverWait(SetUpWebDriver.getDriverInstance(), timeOut);
 		return wait.until(ExpectedConditions.visibilityOf(locator));
 	}
 
 	public void jsClick(WebElement element) {
-		JavascriptExecutor jse = (JavascriptExecutor) SetUpWebDriver.getDriver();
+		JavascriptExecutor jse = (JavascriptExecutor) SetUpWebDriver.getDriverInstance();
 		jse.executeScript("arguments[0].click()", element);
 
 	}
 
 	public void takeScreenShot(String methodName) {
-		File screenShot = ((TakesScreenshot) SetUpWebDriver.getDriver()).getScreenshotAs(OutputType.FILE);
+		File screenShot = ((TakesScreenshot) SetUpWebDriver.getDriverInstance()).getScreenshotAs(OutputType.FILE);
 		try {
 			String timeStamp = getTimeStamp();
 			String screenShotsDirectory = System.getProperty("user.dir") + File.separator + "ScreenShots"
@@ -74,7 +74,7 @@ public class HelperClass {
 
 		String bgColor = element.getCssValue("backgroundColor");
 
-		JavascriptExecutor js = ((JavascriptExecutor) SetUpWebDriver.getDriver());
+		JavascriptExecutor js = ((JavascriptExecutor) SetUpWebDriver.getDriverInstance());
 
 		js.executeScript("arguments[0].style.backgroundColor = '" + "yellow" + "'", element);
 
